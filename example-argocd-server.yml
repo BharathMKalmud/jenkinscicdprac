@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2026-03-06T20:29:04Z"
+  labels:
+    app.kubernetes.io/component: server
+    app.kubernetes.io/managed-by: example-argocd
+    app.kubernetes.io/name: example-argocd-server
+    app.kubernetes.io/part-of: argocd
+  name: example-argocd-server
+  namespace: default
+  ownerReferences:
+  - apiVersion: argoproj.io/v1beta1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ArgoCD
+    name: example-argocd
+    uid: d149af8b-4e0c-4925-b497-6c0252d89037
+  resourceVersion: "6761"
+  uid: db8e9ae7-c642-4dc9-a537-847563959660
+spec:
+  clusterIP: 10.107.195.243
+  clusterIPs:
+  - 10.107.195.243
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 8080
+  - name: https
+    port: 443
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app.kubernetes.io/name: example-argocd-server
+  sessionAffinity: None
+  type: NodePort
+status:
+  loadBalancer: {}
