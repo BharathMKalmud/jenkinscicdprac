@@ -57,7 +57,6 @@ pipeline {
       }
     }
     stage('Update Deployment File') {
-        agent { label 'master' } // or leave default to run on Jenkins node
         environment {
             GIT_REPO_NAME = "jenkinscicdprac"
             GIT_USER_NAME = "BharathMKalmud"
